@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-//user kenek mona redda karath me api eka call karanne
+
 router.route('/user-api').post(userAPI.handleUserData);
 
 
