@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.11.0/sweetalert2.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.11.0/sweetalert2.all.min.js"></script>
+<div class="card mb-8">
+    <div class="card-body table-responsive">
+        <div class="col-md-12">
+            <div class="card bg-light mb-2">
+                <div class="card-header">
+                    <h2><b> <i class="fa fa-university" aria-hidden="true"></i>
+                    Create Job Vacancy</b></h2>
+                  </div>
+
+                  <div class="card-body">
+                    <form [formGroup]="creatJobForm" (ngSubmit)="onSubmit()">
+                        <h3><b><i class="fa fa-user" aria-hidden="true"></i> Job information</b></h3>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="userID"><b>vacancy ID</b></label>
+                                <input type="text" class="form-control inputClass" formControlName="vacnyId" disabled />
+                              </div>
+
+                              <div class="form-group col-md-4">
+                                <label for="userID"><b>Company Name</b></label>
+                                <input type="text" class="form-control inputClass" formControlName="companyName" disabled />
+                              </div>
+
+                              <div class="form-group col-md-5">
+                                <label for="userID"><b>Vacancy Name</b></label>
+                                <input type="text" class="form-control inputClass" placeholder="Software Enginner / Bank Assistant" formControlName="name"
+                                [ngClass]="{ 'is-invalid': submitted && f.name.errors }"  />
+                                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.name.errors.required" class="input-lg"><b>Company name is required</b></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                    <textarea class="form-control inputClass"  placeholder="Job description" formControlName='note'      [ngClass]="{ 'is-invalid': submitted && f.note.errors }" rows="3" ></textarea>
+            <div *ngIf="submitted && f.note.errors" class="invalid-feedback">
+    <div *ngIf="f.note.errors.required" class="input-lg"><b>Job Description is required</b></div>
+                </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                          <label for="inputLastName" class="label">
+                                            <i class="fa fa-file" aria-hidden="true"></i>
+                                            Browse</label>
+                                            <input type="file"    (change)="uploadFile($event)"   formControlName="file"
+                                            [ngClass]="{ 'is-invalid': submitted && f.file.errors }"
+                                            fullWidthplaceholder="Project Name">
+                                            <div *ngIf="f.file.errors  && submitted" class="invalid-feedback">
+                                              <p style="color: red;" *ngIf="f.file.errors.required">
+                                               <b>File upload is required!</b>
+                                              </p>
+                                            </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+
+                            <button type="submit" class="btn btn-primary">Create vacancy</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+
+</div>

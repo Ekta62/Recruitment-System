@@ -1,0 +1,85 @@
+<div [@routerTransition] class="login-page">
+    <div class="row justify-content-md-center">
+        <div class="col-md-8">
+            <img class="user-avatar" src="assets/images/com-pany.png" width="150px" />
+            <h1><b>COMPANY REGISTRATION</b></h1>
+            <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+                <div class="form-content">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input  formControlName ="companyName"
+                                    [placeholder]="'Company Name' | translate"
+                                    class="form-control input-underline input-lg"
+                                    type="text" [ngClass]="{ 'is-invalid': submitted && signupf.companyName.errors }"
+                                />
+                                <div *ngIf="submitted && signupf.companyName.errors" class="invalid-feedback">
+                                    <div *ngIf="signupf.companyName.errors.required" class="input-lg"><b>Company name is required</b></div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input
+                                        [placeholder]="'Email address' | translate" formControlName ="email"
+                                        class="form-control input-underline input-lg"
+                                        type="email" [ngClass]="{ 'is-invalid': submitted && signupf.email.errors }"
+                                    />
+
+                                    <div *ngIf="submitted && signupf.email.errors" class="invalid-feedback">
+                                        <div *ngIf="signupf.email.errors.required" class="input-lg"><b>Email is required</b></div>
+                                                <div *ngIf="signupf.email.errors.email" class="input-lg"><b>Email must be a valid email address</b></div>
+            </div>
+                           </div>
+                                </div>
+                        </div>
+
+                        <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input
+                                            [placeholder]="'Password' | translate"
+                                            class="form-control input-underline input-lg" formControlName ="password"
+                                            type="password" [ngClass]="{ 'is-invalid': submitted && signupf.password.errors }"
+                                        />
+
+                                        <div *ngIf="submitted && signupf.password.errors" class="invalid-feedback">
+                                            <div *ngIf="signupf.password.errors.required" class="input-lg"><b>Password is required</b></div>
+                                            <div *ngIf="signupf.password.errors.minlength" class="input-lg"><b>Password must be at least 6 characters</b></div>
+                                        </div>
+
+
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input
+                                                [placeholder]="'Repeat Password' | translate"
+                                                class="form-control input-underline input-lg" formControlName ="confirmPassword"
+                                                type="password" [ngClass]="{ 'is-invalid': submitted && signupf.confirmPassword.errors }"
+                                            />
+
+                                            <div *ngIf="submitted && signupf.confirmPassword.errors" class="invalid-feedback">
+                                                <div *ngIf="signupf.confirmPassword.errors.required" class="input-lg"><b>Confirm Password is required</b></div>
+                                                <div *ngIf="signupf.confirmPassword.errors.mustMatch" class="input-lg"><b>Passwords must match</b></div>
+                                            </div>
+
+                                    </div>
+                                        </div>
+                            </div>
+
+                    </div>
+
+
+  <div *ngIf="erroMessage != ''" style="color: red;" class=" input-lg">{{erroMessage}}</div>
+
+
+
+                <button type="submit" class= "btn rounded-btn">Register</button>&nbsp;&nbsp;
+                <button type="button" routerLink ='/login' class= "btn rounded-btn">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="card mb-8">
+    <div class="card-body table-responsive">
+        <div class="col-md-12">
+            <div class="card bg-light mb-2">
+                <div class="card-header">
+                    <h2><b> <i class="fa fa-university" aria-hidden="true"></i>
+                   Student Profile</b></h2>
+                  </div>
+                  <div class="alert alert-success" role="alert" *ngIf="f.status.value ==2">
+                    Apply student is accepted!
+                  </div>
+                  <div class="card-body">
+                    <form [formGroup]="ProfileGroup" (ngSubmit)="onSubmit()">
+                        <h3><b><i class="fa fa-user" aria-hidden="true"></i>Information</b></h3>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="userID"><b>Student Name</b></label>
+                                <input type="text" class="form-control inputClass" formControlName="stuentName" disabled />
+                              </div>
+
+                              <div class="form-group col-md-4">
+                                <label for="userID"><b>Student email</b></label>
+                                <input type="text" class="form-control inputClass" formControlName="email" disabled />
+                              </div>
+
+                              <div class="form-group col-md-5">
+                                <label for="userID"><b>Vacancy Name</b></label>
+                                <input type="text" class="form-control inputClass" disabled placeholder="Software Enginner / Bank Assistant" formControlName="vacName"
+                                [ngClass]="{ 'is-invalid': submitted && f.name.errors }"  />
+                                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.name.errors.required" class="input-lg"><b>Company name is required</b></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                <label for="userID"><b>University name</b></label>
+                                <input type="text" class="form-control inputClass" disabled placeholder="Software Enginner / Bank Assistant" formControlName="dgrename"
+                                [ngClass]="{ 'is-invalid': submitted && f.name.errors }"  />
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="userID"><b>Graduation marks</b></label>
+                                    <input type="text" class="form-control inputClass" disabled placeholder="Software Enginner / Bank Assistant" formControlName="gradMarks"
+                                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }"  />
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="userID"><b>GPA value</b></label>
+                                        <input type="text" class="form-control inputClass" disabled placeholder="Software Enginner / Bank Assistant" formControlName="gpaVal"
+                                        [ngClass]="{ 'is-invalid': submitted && f.name.errors }"  />
+                                        </div>
+                                </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                               <button type="button" (click)="onClikViewCV()" class="btn btn-info btn-sm" >View the CV</button>
+                               </div>
+                                </div>
+                            <button type="submit" [disabled]="f.status.value !=1" class="btn btn-primary">Accept for the job</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+
+</div>
